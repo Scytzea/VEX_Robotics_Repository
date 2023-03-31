@@ -1,44 +1,40 @@
-//----------------------------------------------------------------------------
-//                                                                            
-//    Module:       stop/start button.cpp                                                  
-//    Author:       Scytzea                                                  
-//    Created:      March 30, 2023                                                  
-//    Description:  Code so that you can use the same button to start/stop a motor 
-//                  dm me on discord @scytzea!!#0012, if you have any issues <3                                              
-//                                                                            
-//----------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       V5 Start/Stop Button.cpp                                  */
+/*    Author:       Scytzea                                                   */
+/*    Created:      March 31, 2023                                            */
+/*    Description:  Start and stop a motor with the same button!              */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
 
-// Include the IQ Library
-#include "iq_cpp.h"
-
+// Include the V5 Library
+#include "vex.h"
+  
 // Allows for easier use of the VEX Library
 using namespace vex;
 
-int main() {
-  //nothing needed here <3
-}
-//defining the boolean
-bool startStop;
+//define Boolean
+bool spinMotor;
 
-//when started make sure its true
-int whenStarted1() {
-  startStop = true;
-  return 0;
+//when started
+void whenStarted() {
+  spinMotor = true;
 }
 
-//making and if/then statement, if its true,
-//then it will make the motor spin, if not
-//the motor will stop
-void onevent_ControllerButtonEUp_pressed_0() {
-  if (startStop == true){
-    example_motor.spin(forward);
-    startStop = false;
-    //make sure to set it to false so when hit again
-    //it stops
-  } else {
-    example_motor.stop();
-    startStop = true;
-    //make sure to set it to true so when hit again
-    //it starts
+//Button to start/stop motor
+void xPressed() {
+  if (spinMotor == true) {
+    exampleMotor.spin(forward);
+    spinMotor = false;
   }
+  else {
+    exampleMotor.stop();
+    spinMotor = true;
+  }
+}
+
+int main() {
+  whenStarted();
+  //event handlers
+  Controller1.ButtonX.pressed(xPressed);
 }
