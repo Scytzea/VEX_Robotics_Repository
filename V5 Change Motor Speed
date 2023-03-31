@@ -3,7 +3,8 @@
 /*    Module:       V5 Motor Speed Changer.cpp                                */
 /*    Author:       Scytzea                                                   */
 /*    Created:      March 31, 2023                                            */
-/*    Description:  Change Motor speed code tempelate                         */
+/*    Description:  Change Motor speed code tempelate dm scytzea!!#0012 on    */
+/*                  discord if you need help/have issues!!                    */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
@@ -20,6 +21,8 @@ int whenStarted1() {
   while (true) {
     exampleMotor.setVelocity(motorSpeed, percent);
   }
+  //you could also define the original motor speed here if you want by doing
+  //motorSpeed = (value);
 }
 
 //increase motor speed with X
