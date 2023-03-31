@@ -1,0 +1,40 @@
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       V5 Motor Speed Changer.cpp                                */
+/*    Author:       Scytzea                                                   */
+/*    Created:      March 31, 2023                                            */
+/*    Description:  Change Motor speed code tempelate                         */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
+// Include the V5 Library
+#include "vex.h"
+  
+// Allows for easier use of the VEX Library
+using namespace vex;
+
+//define variables
+float motorSpeed;
+
+int whenStarted1() {
+  while (true) {
+    exampleMotor.setVelocity(motorSpeed, percent);
+  }
+}
+
+//increase motor speed with X
+void ButtonXPressed() {
+  motorSpeed = motorSpeed + 10.0;
+}
+
+//decrease motor speed with B
+void ButtonBPressed() {
+  motorSpeed = motorSpeed - 10.0;
+}
+
+int main() {
+  whenStarted1();
+  //register event handlers
+  Controller1.ButtonX.pressed(ButtonXPressed);
+  Controller1.ButtonB.pressed(ButtonBPressed);
+}
